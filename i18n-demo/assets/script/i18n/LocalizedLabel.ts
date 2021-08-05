@@ -23,13 +23,13 @@ export class LocalizedLabel extends Component {
             return;
         } 
     }
+    
 
     updateLabel () {
         if (!this.label) {
             console.error('Failed to update localized label, label component is invalid!');
             return;
         }
-        this.label.string = LocalizedManager.languages.get(this.dataID) || '';
+        this.label.string = LocalizedManager.getFinishStr(this.dataID);
     }
 }
-

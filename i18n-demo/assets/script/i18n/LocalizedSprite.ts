@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, Sprite, SpriteAtlas, SpriteFrame } from 'cc';
+import { _decorator, Component, Sprite, SpriteFrame } from 'cc';
 import { LocalizedManager } from './LocalizedManager';
 import { SpriteFrameModel } from './SpriteFrameModel';
 
