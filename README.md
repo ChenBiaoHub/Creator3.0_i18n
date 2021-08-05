@@ -16,6 +16,9 @@
  }
  ```
  - 再去 resources/i18n 中添加对应的 json 文件
+ 
+ #### 具体使用
+ 
  - 切换语言
  ```
   LocalizedManager.changeLanguage(Language.Chinese);
@@ -26,8 +29,8 @@
 LocalizedManager.getFinishStr('hierarchy.name', {year: 2021});
 ```
 - 静态文字
- - 添加 LocalizedLabel.ts 脚本，设置 dataID
+  - 添加 LocalizedLabel.ts 脚本，设置 dataID
 
 - 静态图片
- - 添加 LocalizedSprite.ts 脚本，将 spriteFrameModels 数量设置为你语言数量
- - 再将 图片 和 language 对应
+  - 添加 LocalizedSprite.ts 脚本，将 spriteFrameModels 数量设置为你语言数量
+  - 再将 图片 和 language 对应
