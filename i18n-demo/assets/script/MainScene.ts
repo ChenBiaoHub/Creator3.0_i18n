@@ -1,7 +1,7 @@
 
 import { _decorator, Component, find, Label } from 'cc';
 import { LocalizedManager } from './i18n/LocalizedManager';
-const { ccclass, property } = _decorator;
+const { ccclass } = _decorator;
 
 @ccclass('MainScene')
 export class MainScene extends Component {

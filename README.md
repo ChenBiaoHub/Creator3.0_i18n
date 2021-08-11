@@ -1,6 +1,8 @@
 # Creator3.0_i18n
  cocos creator 3.0 TypeScript本版多语言功能
 
+[![MIT](https://img.shields.io/dub/l/vibe-d.svg)](https://opensource.org/licenses/MIT)![](https://www.code-inspector.com/project/25356/status/svg)
+
  ![示例图](https://github.com/ChenBiaoHub/Creator3.0_i18n/blob/master/i18n-demo.gif?raw=true)
 
  **注：目前还没有做成插件形式，后期会制作完整插件完善整体功能**
