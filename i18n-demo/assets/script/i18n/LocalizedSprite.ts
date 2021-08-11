@@ -19,7 +19,7 @@ export class LocalizedSprite extends Component {
     }
 
     fetchRender () {
-        let sprite = this.getComponent(Sprite);
+        const sprite = this.getComponent(Sprite);
         if (sprite) {
             this.sprite = sprite;
             this.updateSprite(LocalizedManager.curLang);
@@ -27,7 +27,7 @@ export class LocalizedSprite extends Component {
         }
     }
 
-    getSpriteFrameByLang (lang: String) : SpriteFrame | null {
+    getSpriteFrameByLang (lang: string) : SpriteFrame | null {
         for (let i = 0; i < this.spriteFrameModels.length; ++i) {
             if (this.spriteFrameModels[i].language === lang) {
                 return this.spriteFrameModels[i].spriteFrame;
@@ -36,7 +36,7 @@ export class LocalizedSprite extends Component {
         return null;
     }
 
-    updateSprite (language : String) {
+    updateSprite (language : string) {
         if (!this.sprite) {
             console.log('Failed to update localized sprite, sprite component is invalid!');
             return;

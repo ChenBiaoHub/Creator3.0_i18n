@@ -16,12 +16,12 @@ export class LocalizedLabel extends Component {
     }
 
     fetchRender () {
-        let label = this.getComponent(Label);
+        const label = this.getComponent(Label);
         if (label) {
             this.label = label;
             this.updateLabel();
         } else {
-            let richText = this.getComponent(RichText);
+            const richText = this.getComponent(RichText);
             if (richText) {
                 this.label = richText;
             }

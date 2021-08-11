@@ -3,7 +3,7 @@ import { _decorator, JsonAsset, director, resources } from 'cc';
 import { LocalizedLabel } from './LocalizedLabel';
 import { LocalizedSprite } from './LocalizedSprite';
 
-const { ccclass, property } = _decorator;
+const { ccclass } = _decorator;
 
 interface LanguageInterface {
     [propName: string] : any
@@ -16,12 +16,12 @@ export class LocalizedManager {
     
     public static langInfo: LanguageInterface; 
 
-    static changeLanguage(newLanguage: string, finish?:((changed: Boolean)=>void)) {
+    static changeLanguage(newLanguage: string, finish?:((changed: boolean)=>void)) {
         if (LocalizedManager.curLang === newLanguage) {
             if (finish) finish(false);
             return;
         } else {
-            let jsonPath = 'i18n/' + newLanguage;
+            const jsonPath = 'i18n/' + newLanguage;
             resources.load(jsonPath, JsonAsset, (err, data) => {
                 if (err) {
                     console.error(err.message);
@@ -29,14 +29,14 @@ export class LocalizedManager {
                     LocalizedManager.langInfo = data.json as LanguageInterface;
                     LocalizedManager.curLang = newLanguage;
                     if (finish) finish(true);
-                    let rootNodes = director.getScene()?.children;
+                    const rootNodes = director.getScene()?.children;
                     rootNodes?.forEach(element => {
-                        let localizedLabels = element.getComponentsInChildren(LocalizedLabel);
+                        const localizedLabels = element.getComponentsInChildren(LocalizedLabel);
                         localizedLabels.forEach(lab => {
                             lab.updateLabel();
                         });
 
-                        let localizedSprites = element.getComponentsInChildren(LocalizedSprite);
+                        const localizedSprites = element.getComponentsInChildren(LocalizedSprite);
                         localizedSprites.forEach(spr => {
                             spr.updateSprite(LocalizedManager.curLang);
                         });
@@ -70,7 +70,7 @@ export class LocalizedManager {
     
             const matchArray = result.match(regex);
             matchArray?.forEach(element =>{
-                let proName = element.substring(2, element.length - 1);
+                const proName = element.substring(2, element.length - 1);
                 result = result.replace(element, params[proName] as string);
             });
         }
