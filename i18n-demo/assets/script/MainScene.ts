@@ -1,26 +1,30 @@
 
 import { _decorator, Component, find, Label } from 'cc';
-import { Language, LocalizedManager } from './i18n/LocalizedManager';
+import { LocalizedManager } from './i18n/LocalizedManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('MainScene')
 export class MainScene extends Component {
 
 	onLoad() {
-		this.setLabelString();
+		let self = this;
+		LocalizedManager.changeLanguage('en', (changed) =>{
+			self.setLabelString();
+		})
 	}
 
 	clickBtn() {
-		if (LocalizedManager.curLang === Language.English) {
-            LocalizedManager.changeLanguage(Language.Chinese, (changed) =>{
+		let self = this;
+		if (LocalizedManager.curLang === 'en') {
+            LocalizedManager.changeLanguage('zh', (changed) =>{
 				if (changed) {
-					this.setLabelString();
+					self.setLabelString();
 				}
             });
         } else {
-            LocalizedManager.changeLanguage(Language.English, (changed)=>{
+            LocalizedManager.changeLanguage('en', (changed)=>{
 				if (changed) {
-					this.setLabelString();
+					self.setLabelString();
 				}
             });
         }

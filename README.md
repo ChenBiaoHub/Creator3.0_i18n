@@ -1,34 +1,27 @@
 # Creator3.0_i18n
  cocos creator 3.0 TypeScript本版多语言功能
- 
+
  ![示例图](https://github.com/ChenBiaoHub/Creator3.0_i18n/blob/master/i18n-demo.gif?raw=true)
- 
+
  **注：目前还没有做成插件形式，后期会制作完整插件完善整体功能**
- 
+
  ### 使用方法
  #### 使用前设置
- **要注意先设置语言**
- - 在 LocalizedManager.ts 中添加语言枚举
- ```
- export enum Language {
-     English = 'en',
-     Chinese = 'zh'
- }
- ```
- - 再去 resources/i18n 中添加对应的 json 文件
- 
+ - 在 resources/i18n 中添加对应的语言的 json 文件
+
  #### 具体使用
- 
+
  - 切换语言
+     - 注：因为是动态加载 json 文件，所以会有延时，第一个界面面的动态修改，需要在 block 回调里面处理。静态修改的本身有处理工具本身有处理。
  ```
-  LocalizedManager.changeLanguage(Language.Chinese);
+  LocalizedManager.changeLanguage('en');
  ```
 - 动态加载文字
 ```
 //层级可以无线叠加，用 . 分割
 LocalizedManager.getFinishStr('hierarchy.name', {year: 2021});
 ```
-- 静态文字
+- 静态文字(包括 Label 和 RichText )
   - 添加 LocalizedLabel.ts 脚本，设置 dataID
 
 - 静态图片

@@ -4,10 +4,6 @@ import { LocalizedLabel } from './LocalizedLabel';
 import { LocalizedSprite } from './LocalizedSprite';
 
 const { ccclass, property } = _decorator;
-export enum Language {
-    English = 'en',
-    Chinese = 'zh'
-}
 
 interface LanguageInterface {
     [propName: string] : any
@@ -16,11 +12,11 @@ interface LanguageInterface {
 @ccclass('LocalizedManager')
 export class LocalizedManager {
     
-    public static curLang = Language.Chinese;
+    public static curLang = 'zh';
     
     public static langInfo: LanguageInterface; 
 
-    static changeLanguage(newLanguage: Language, finish?:((changed: Boolean)=>void)) {
+    static changeLanguage(newLanguage: string, finish?:((changed: Boolean)=>void)) {
         if (LocalizedManager.curLang === newLanguage) {
             if (finish) finish(false);
             return;
@@ -35,15 +31,15 @@ export class LocalizedManager {
                     if (finish) finish(true);
                     let rootNodes = director.getScene()?.children;
                     rootNodes?.forEach(element => {
-                        let localizedLabel = element.getComponentInChildren(LocalizedLabel);
-                        if (localizedLabel) {
-                            localizedLabel.updateLabel();
-                        }
+                        let localizedLabels = element.getComponentsInChildren(LocalizedLabel);
+                        localizedLabels.forEach(lab => {
+                            lab.updateLabel();
+                        });
 
-                        let localizedSprite = element.getComponentInChildren(LocalizedSprite);
-                        if (localizedSprite) {
-                            localizedSprite.updateSprite(LocalizedManager.curLang);
-                        }
+                        let localizedSprites = element.getComponentsInChildren(LocalizedSprite);
+                        localizedSprites.forEach(spr => {
+                            spr.updateSprite(LocalizedManager.curLang);
+                        });
                     })
 
                 }
@@ -54,7 +50,8 @@ export class LocalizedManager {
 
     static getFinishStr(phrase: string, params?: {[proName: string]: number | string}) {
         let temp = LocalizedManager.langInfo;
-        
+        if (!temp) return phrase;
+
         const phraseArr = phrase.split('.');
         let result = phrase;
         for (let i = 0; i < phraseArr.length; i++) {

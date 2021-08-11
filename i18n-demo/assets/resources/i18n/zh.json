@@ -2,5 +2,6 @@
 	"click_switch_language": "点击切换语言",
 	"hierarchy": {
 		"name": "%{year} - 小黑屋"
-	}
+	},
+	"rich_text": "<color=#00ff00>富文本</color><color=#0fffff>测试</color>"
 }

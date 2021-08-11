@@ -2,5 +2,6 @@
 	"click_switch_language": "click switch language",
 	"hierarchy": {
 		"name": "xiao hei wu - %{year}"
-	}
+	},
+	"rich_text": "<color=#00ff00>Rich</color><color=#0fffff>text</color>"
 }
